@@ -1,0 +1,24 @@
+layout_n() {
+	local node_version="${1}"
+
+	local direnv="${PWD}/.direnv"
+
+	local n="${direnv}/n"
+	local n_root="${direnv}/node-${node_version}/bin"
+	local n_node="${n_root}/node"
+	local n_npm="${n_root}/npm"
+
+	if [[ ! -x "${n}" ]]; then
+		mkdir -p "${direnv}"
+		curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o "${n}"
+		chmod +x "${n}"
+	fi
+
+	if [[ ! -x "${n_node}" ]]; then
+		mkdir -p "${direnv}/node-${node_version}"
+		N_PREFIX="${direnv}/node-${node_version}" "${n}" ${node_version}
+		"${n_npm}" update --silent --global npm > /dev/null
+	fi
+
+	export PATH="${PWD}/node_modules/.bin:${n_root}:${PATH}"
+}

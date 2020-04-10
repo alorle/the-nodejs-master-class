@@ -1,0 +1,31 @@
+# Visual Studio Code
+.vscode/
+
+# Editorconfig
+.editorconfig
+
+# Direnv files
+.direnv/
+.envrc*
+
+# Git files
+.git/
+.gitignore
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Build directories
+dist/
+
+# TypeScript configuration files
+tsconfig.json
+tsconfig.*.json
+
+# ESLint configuration files
+.eslintignore
+.eslintrc*
+
+# Prettier configuration files
+.prettierrc*
